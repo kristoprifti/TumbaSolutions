@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Tumba Solutions</string>
     <string name="action_settings">Settings</string>
+    <string name="pic_description">Picture that user has taken</string>
+    <string name="empty_list_description">Take your first picture by pressing the camera button in the bottom right corner</string>
+    <string name="photo_detail_activity">Photo Details</string>
 </resources>

@@ -22,6 +22,12 @@
         <item name="android:windowBackground">@drawable/dialog_design</item>
     </style>
 
+    <style name="MyCardViewStyle" parent="Theme.AppCompat.Light">
+        <item name="cardCornerRadius">2dp</item>
+        <item name="cardElevation">5dp</item>
+        <item name="cardBackgroundColor">@color/colorPrimary</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
