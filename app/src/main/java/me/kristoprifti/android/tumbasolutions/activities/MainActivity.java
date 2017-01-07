@@ -1,4 +1,4 @@
-package me.kristoprifti.android.tumbasolutions;
+package me.kristoprifti.android.tumbasolutions.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -45,6 +45,11 @@ import java.util.Locale;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
+import me.kristoprifti.android.tumbasolutions.BuildConfig;
+import me.kristoprifti.android.tumbasolutions.utils.GPSTracker;
+import me.kristoprifti.android.tumbasolutions.models.Picture;
+import me.kristoprifti.android.tumbasolutions.adapters.PictureAdapter;
+import me.kristoprifti.android.tumbasolutions.R;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -201,7 +206,9 @@ public class MainActivity extends AppCompatActivity {
         final String weatherIconUrl = weatherObject.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("weatherIconUrl").getJSONObject(0).getString("value");
         String weatherDescription = weatherObject.getJSONObject("data").getJSONArray("current_condition").getJSONObject(0).getJSONArray("weatherDesc").getJSONObject(0).getString("value");
 
-        final String weatherConditions = "Observation Time: " + observationTime + "\nTemperature in Celsius: " + temperatureCelsius + "\nWeather Description: " + weatherDescription;
+        final String weatherConditions = getString(R.string.observation_time) + observationTime + "\n"
+                                        + getString(R.string.temperature) + temperatureCelsius + "\n"
+                                        + getString(R.string.weather) + weatherDescription;
 
         runOnUiThread(new Runnable() {
             @Override
@@ -221,7 +228,6 @@ public class MainActivity extends AppCompatActivity {
                 if (emptyTextView.getVisibility() == View.VISIBLE)
                     emptyTextView.setVisibility(View.INVISIBLE);
                 pictureAdapter.notifyDataSetChanged();
-                Toast.makeText(MainActivity.this, newPictureObject.toString(), Toast.LENGTH_LONG).show();
                 Log.d(TAG, "run: " + newPictureObject.toString());
             }
         });
@@ -269,15 +275,13 @@ public class MainActivity extends AppCompatActivity {
 
             if(addressList != null) {
                 Address returnedAddress = addressList.get(0);
-                StringBuilder strReturnedAddress = new StringBuilder("Address:\n");
+                StringBuilder strReturnedAddress = new StringBuilder();
                 for(int i=0; i<returnedAddress.getMaxAddressLineIndex(); i++) {
-                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
+                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append(",");
                 }
-                //Toast.makeText(getApplicationContext(), strReturnedAddress, Toast.LENGTH_LONG).show();
                 return strReturnedAddress.toString();
             }
             else{
-                //Toast.makeText(getApplicationContext(), "No Address Returned", Toast.LENGTH_LONG).show();
                 return null;
             }
         } catch (IOException e) {
@@ -321,18 +325,12 @@ public class MainActivity extends AppCompatActivity {
         // Setting Dialog Title
         alertDialog.setTitle("GPS is settings");
         // Setting Dialog Message
-        alertDialog.setMessage("GPS is not enabled. Do you want to go to settings menu?");
+        alertDialog.setMessage("GPS is not enabled. Enable GPS from Settings menu!");
         // On pressing Settings button
         alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog,int which) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 startActivity(intent);
-            }
-        });
-        // on pressing cancel button
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
             }
         });
         // Showing Alert Message

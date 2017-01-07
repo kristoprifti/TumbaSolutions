@@ -1,4 +1,4 @@
-package me.kristoprifti.android.tumbasolutions;
+package me.kristoprifti.android.tumbasolutions.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,12 +7,16 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import me.kristoprifti.android.tumbasolutions.models.Picture;
+import me.kristoprifti.android.tumbasolutions.R;
+
 public class PhotoDetailActivity extends AppCompatActivity {
 
-    public static final String EXTRA_PARM_ID = "photo";
+    public static final String EXTRA_PARM_ID = "photo_details";
     private static final String TAG = "PhotoDetailActivity";
 
     @Override
@@ -29,11 +33,29 @@ public class PhotoDetailActivity extends AppCompatActivity {
 
         if(photo != null){
             ImageView photoImage = (ImageView) findViewById(R.id.pictureImageView);
+            ImageView weatherIcon = (ImageView) findViewById(R.id.weatherIcon);
+            TextView pictureDetails = (TextView) findViewById(R.id.pictureDetails);
+
             Picasso.with(this)
                     .load(photo.getPictureUrl())
                     .noPlaceholder()
                     .error(R.mipmap.ic_launcher)
                     .into(photoImage);
+            Picasso.with(this)
+                    .load(photo.getWeatherImageUri())
+                    .noPlaceholder()
+                    .error(R.mipmap.ic_launcher)
+                    .into(weatherIcon);
+
+            pictureDetails.setText(photo.getTitle());
+            pictureDetails.append("\n");
+            pictureDetails.append(getString(R.string.latitude) + photo.getLatitude());
+            pictureDetails.append("\n");
+            pictureDetails.append(getString(R.string.longitude) + photo.getLongitude());
+            pictureDetails.append("\n");
+            pictureDetails.append(getString(R.string.address) + photo.getAddressLocation());
+            pictureDetails.append("\n");
+            pictureDetails.append(photo.getWeatherCondition());
         }
         Log.d(TAG, "onCreate: ends");
     }

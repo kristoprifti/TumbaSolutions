@@ -1,10 +1,9 @@
-package me.kristoprifti.android.tumbasolutions;
+package me.kristoprifti.android.tumbasolutions.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by Kristi on 1/4/2017.
@@ -24,59 +23,59 @@ public class Picture extends RealmObject implements Parcelable{
         // default values possible since 2.0.2
     }
 
-    String getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    String getPictureUrl() {
+    public String getPictureUrl() {
         return pictureUrl;
     }
 
-    double getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    double getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    String getAddressLocation() {
+    public String getAddressLocation() {
         return addressLocation;
     }
 
-    String getWeatherCondition() {
+    public String getWeatherCondition() {
         return weatherCondition;
     }
 
-    String getWeatherImageUri() {
+    public String getWeatherImageUri() {
         return weatherImageUri;
     }
 
-    void setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    void setPictureUrl(String pictureUrl) {
+    public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
     }
 
-    void setLatitude(double latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    void setLongitude(double longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    void setAddressLocation(String addressLocation) {
+    public void setAddressLocation(String addressLocation) {
         this.addressLocation = addressLocation;
     }
 
-    void setWeatherCondition(String weatherCondition) {
+    public void setWeatherCondition(String weatherCondition) {
         this.weatherCondition = weatherCondition;
     }
 
-    void setWeatherImageUri(String weatherImageUri) {
+    public void setWeatherImageUri(String weatherImageUri) {
         this.weatherImageUri = weatherImageUri;
     }
 

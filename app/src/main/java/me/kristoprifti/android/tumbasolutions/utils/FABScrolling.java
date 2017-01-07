@@ -1,4 +1,4 @@
-package me.kristoprifti.android.tumbasolutions;
+package me.kristoprifti.android.tumbasolutions.utils;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;

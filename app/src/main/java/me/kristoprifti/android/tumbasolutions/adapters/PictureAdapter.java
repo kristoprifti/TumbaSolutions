@@ -1,4 +1,4 @@
-package me.kristoprifti.android.tumbasolutions;
+package me.kristoprifti.android.tumbasolutions.adapters;
 
 import android.content.Context;
 import android.net.Uri;
@@ -12,17 +12,20 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import me.kristoprifti.android.tumbasolutions.models.Picture;
+import me.kristoprifti.android.tumbasolutions.R;
+
 /**
  * Created by Kristi on 1/4/2017.
  */
 
-class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ViewHolder>{
+public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ViewHolder>{
 
     private ArrayList<Picture> mPicturesList;
     private Context mContext;
     private OnItemClickListener mItemClickListener;
 
-    PictureAdapter(ArrayList<Picture> picturesList, Context context) {
+    public PictureAdapter(ArrayList<Picture> picturesList, Context context) {
         this.mPicturesList = picturesList;
         this.mContext = context;
     }
@@ -66,11 +69,11 @@ class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.ViewHolder>{
         }
     }
 
-    interface OnItemClickListener {
+    public interface OnItemClickListener {
         void onItemClick(View view, int position);
     }
 
-    void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
+    public void setOnItemClickListener(final OnItemClickListener mItemClickListener) {
         this.mItemClickListener = mItemClickListener;
     }
 }

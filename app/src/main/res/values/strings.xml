@@ -4,4 +4,12 @@
     <string name="pic_description">Picture that user has taken</string>
     <string name="empty_list_description">Take your first picture by pressing the camera button in the bottom right corner</string>
     <string name="photo_detail_activity">Photo Details</string>
+    <string name="weather_condition_picture">Picture demonstrating the weather condition</string>
+    <string name="latitude">Latitude:</string>
+    <string name="longitude">Longitude:</string>
+    <string name="address">Address:</string>
+    <string name="weather_conditions">Weather conditions:</string>
+    <string name="observation_time">Observation Time:</string>
+    <string name="temperature">Temperature in Celsius:</string>
+    <string name="weather">Weather Description:</string>
 </resources>

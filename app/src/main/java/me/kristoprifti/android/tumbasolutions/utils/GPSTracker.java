@@ -1,4 +1,4 @@
-package me.kristoprifti.android.tumbasolutions;
+package me.kristoprifti.android.tumbasolutions.utils;
 
 import android.app.Service;
 import android.content.Context;
@@ -11,11 +11,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 /**
- * Create this Class from tutorial :
- * http://www.androidhive.info/2012/07/android-gps-location-manager-tutorial
- *
- * For Geocoder read this : http://stackoverflow.com/questions/472313/android-reverse-geocoding-getfromlocation
- *
+ * Created by Kristi on 1/4/2017.
  */
 
 public class GPSTracker extends Service implements LocationListener {
